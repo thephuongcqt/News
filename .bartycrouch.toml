@@ -1,0 +1,35 @@
+[update]
+tasks = ["code", "transform", "normalize"]
+
+[update.interfaces]
+paths = ["./News/Resources"]
+defaultToBase = false
+ignoreEmptyStrings = false
+unstripped = false
+
+[update.code]
+codePaths = ["./News"]
+localizablePaths = ["./News"]
+defaultToKeys = false
+additive = true
+unstripped = false
+plistArguments = true
+
+[update.transform]
+codePaths = ["./News"]
+localizablePaths = ["./News"]
+transformer = "swiftgenStructured"
+supportedLanguageEnumPath = "./News"
+typeName = "Localize"
+translateMethodName = "translate"
+
+[update.normalize]
+paths = ["./News"]
+sourceLocale = "en"
+harmonizeWithSource = true
+sortByKeys = true
+
+[lint]
+paths = ["./News"]
+duplicateKeys = true
+emptyValues = true

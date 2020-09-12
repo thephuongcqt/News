@@ -1,0 +1,37 @@
+strings:
+ inputs: News/Resources/en.lproj
+ filter: Localizable.strings$
+ outputs:
+   - templateName: structured-swift5
+     output: News/Resources/Generated/Accessor.strings.swift
+     params:
+       publicAccess: true
+colors:
+ inputs: News/Resources/Color/colors.txt
+ outputs:
+   templateName: swift5
+   output: News/Resources/Generated/Accessor.colors.swift
+   params:
+     publicAccess: true
+xcassets:
+ inputs:
+   - News/Resources/Assets.xcassets
+ outputs:
+   - templateName: swift5
+     output: News/Resources/Generated/Accessor.images.swift
+     params:
+       publicAccess: true
+fonts:
+  inputs: News/Resources/Fonts
+  outputs:
+    - templateName: swift5
+      output: News/Resources/Generated/Accessor.fonts.swift
+      params:
+        publicAccess: true
+coredata:
+  inputs: News/Resources/News.xcdatamodeld
+  outputs:
+    templateName: swift5
+    output: News/Resources/Generated/CoreData.swift
+    params:
+        publicAccess: true
