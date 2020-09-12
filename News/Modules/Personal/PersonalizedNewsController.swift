@@ -16,8 +16,7 @@ final class PersonalizedNewsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Personalized"
+                
         view.backgroundColor = .lightGray
     }
 }

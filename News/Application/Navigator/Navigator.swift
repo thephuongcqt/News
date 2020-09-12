@@ -22,19 +22,14 @@ final class Navigator {
 
     
     func showMain() {
-        let mainTabController = MainTabController()
-        
         let newsListController = NewsListViewController()
         let personalController = PersonalizedNewsController()
         let profileController = ProfileViewController()
         
-        mainTabController.setViewControllers(
-            [
-                newsListController,
-                personalController,
-                profileController
-            ],
-            animated: false
+        let mainTabController = MainTabController(
+            newsList: newsListController,
+            personalizedNews: personalController,
+            profile: profileController
         )
         
         navigationControler.setViewControllers([mainTabController], animated: false)
