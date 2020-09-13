@@ -21,3 +21,5 @@
 "tag_view_title" = "Please choose your own category";
 
 "username_textfield_placeholder" = "Please enter your username";
+
+"welcome_user" = "Welcome, ";

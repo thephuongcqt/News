@@ -9,6 +9,7 @@
 import UIKit
 
 final class MainTabController: UITabBarController {
+    private let topLine = UIView()
     private let newsListController: NewsListViewController
     private let personalizedNewsController: NewsListViewController
     private let profileController: ProfileViewController
@@ -31,32 +32,41 @@ final class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.addSubview(topLine)
         visualize()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        topLine.frame = CGRect(x: 0, y: -1, width: view.bounds.width, height: 1)
+    }
+    
     private func visualize() {
+        topLine.autoresizingMask = .flexibleWidth
+        topLine.backgroundColor = ColorName.black.color.alpha(0.5)
+        
+        title = L10n.tabbarNewsListTitle
         tabBar.isTranslucent = true
         tabBar.barTintColor = ColorName.white.color
         tabBar.tintColor = ColorName.blueLink.color
         tabBar.barStyle = .black
         tabBar.selectionIndicatorImage = UIImage()
         tabBar.unselectedItemTintColor = ColorName.black.color
-        tabBar.backgroundColor = .clear
         
         newsListController.tabBarItem = UITabBarItem(
             title: L10n.tabbarNewsListTitle,
-            image: Asset.tabHome.image,
-            selectedImage: Asset.tabHome.image
+            image: Asset.tabbarHome.image,
+            selectedImage: Asset.tabbarHome.image
         )
         personalizedNewsController.tabBarItem = UITabBarItem(
             title: L10n.tabbarPersonalizedNewsTitle,
-            image: Asset.icExplorer.image,
-            selectedImage: Asset.icExplorer.image
+            image: Asset.tabbarHeart.image,
+            selectedImage: Asset.tabbarHeart.image
         )
         profileController.tabBarItem = UITabBarItem(
             title: L10n.tabbarProfileTitle,
-            image: Asset.tabProfile.image,
-            selectedImage: Asset.tabProfile.image
+            image: Asset.tabbarProfile.image,
+            selectedImage: Asset.tabbarProfile.image
         )
         
         setViewControllers(
@@ -67,5 +77,9 @@ final class MainTabController: UITabBarController {
             ],
             animated: false
         )
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        title = item.title
     }
 }

@@ -45,3 +45,9 @@ extension UIViewController {
         }
     }
 }
+
+extension UIScrollView {
+    func isNearBottomEdge(edgeOffset: CGFloat = 50.0) -> Bool {
+        contentOffset.y + frame.size.height + edgeOffset > contentSize.height
+    }
+}

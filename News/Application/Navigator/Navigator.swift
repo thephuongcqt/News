@@ -38,8 +38,7 @@ final class Navigator {
             newsList: newsListController,
             personalizedNews: personalController,
             profile: profileController
-        )
-        
+        )        
         navigationControler.setViewControllers([mainTabController], animated: true)
     }
     

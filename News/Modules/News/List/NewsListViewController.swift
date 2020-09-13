@@ -59,8 +59,7 @@ final class NewsListViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
-    func visualize() {
-        title = L10n.tabbarNewsListTitle
+    func visualize() {        
         edgesForExtendedLayout = []
         view.backgroundColor = ColorName.neutral2.color
         tableView.backgroundColor = ColorName.neutral2.color
@@ -79,12 +78,10 @@ final class NewsListViewController: UIViewController {
         let refreshTrigger = refreshControl.rx.controlEvent(.valueChanged).asObservable()
         let loadMore = tableView.rx.contentOffset
             .flatMapLatest { [weak self] point -> Observable<Int> in
-                guard let self = self, self.view.isUserInteractionEnabled else {
+                guard let self = self, self.view.isUserInteractionEnabled, self.tableView.isNearBottomEdge() else {
                     return .empty()
                 }
-                let loadMoreThreshold: CGFloat = self.tableView.frame.height * 0.3
-                let needToLoadMore = point.y + self.tableView.frame.height + loadMoreThreshold >= self.tableView.contentSize.height
-                return needToLoadMore ? .just(self.currentPage + 1) : .empty()
+                return .just(self.currentPage + 1)
             }
             .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
         

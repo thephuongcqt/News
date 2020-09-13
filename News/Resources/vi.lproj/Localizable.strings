@@ -21,3 +21,5 @@
 "tag_view_title" = "Hãy chọn chủ để mà bạn yêu thích";
 
 "username_textfield_placeholder" = "Vui lòng nhập tên đăng nhập";
+
+"welcome_user" = "Xin chào, ";

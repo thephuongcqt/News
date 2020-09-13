@@ -34,6 +34,8 @@ public enum L10n {
   public static let tagViewTitle = L10n.tr("Localizable", "tag_view_title")
   /// Please enter your username
   public static let usernameTextfieldPlaceholder = L10n.tr("Localizable", "username_textfield_placeholder")
+  /// Welcome, 
+  public static let welcomeUser = L10n.tr("Localizable", "welcome_user")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

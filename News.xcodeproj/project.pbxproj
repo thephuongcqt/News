@@ -201,7 +201,6 @@
 		BF146540250C5FF4006C4FB7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				BF155763250C7ADF00044FA1 /* Manager */,
 				BF155734250C62BF00044FA1 /* Navigator */,
 				BF14651B250C5DEF006C4FB7 /* AppDelegate.swift */,
 			);
@@ -322,12 +321,12 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		BF155763250C7ADF00044FA1 /* Manager */ = {
+		BF155763250C7ADF00044FA1 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				BF155764250C7AEC00044FA1 /* CoreDataManager.swift */,
 			);
-			path = Manager;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		BF155766250C7B9100044FA1 /* Localize */ = {
@@ -341,6 +340,7 @@
 		BF15576B250C86D100044FA1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BF155763250C7ADF00044FA1 /* Database */,
 				BF155771250C89E400044FA1 /* Network */,
 			);
 			path = Data;

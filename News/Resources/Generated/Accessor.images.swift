@@ -26,6 +26,10 @@ public enum Asset {
   public static let tabHome = ImageAsset(name: "tab_home")
   public static let tabPersonalizedNews = ImageAsset(name: "tab_personalized_news")
   public static let tabProfile = ImageAsset(name: "tab_profile")
+  public static let tabbarDiscovery = ImageAsset(name: "tabbar_discovery")
+  public static let tabbarHeart = ImageAsset(name: "tabbar_heart")
+  public static let tabbarHome = ImageAsset(name: "tabbar_home")
+  public static let tabbarProfile = ImageAsset(name: "tabbar_profile")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

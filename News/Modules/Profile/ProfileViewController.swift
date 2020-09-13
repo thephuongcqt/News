@@ -43,6 +43,8 @@ final class ProfileViewController: UIViewController {
         edgesForExtendedLayout = []
         title = L10n.tabbarProfileTitle
         view.backgroundColor = ColorName.white.color
+        
+        usernameLabel.font = FontFamily.SFProDisplay.bold.font(size: 26)
     }
     
     private func setupConstraints() {
@@ -72,7 +74,7 @@ final class ProfileViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         if let username = output.user?.username {
-            usernameLabel.text = "Welcome, \(username)"
+            usernameLabel.text = L10n.welcomeUser + username
         }
         if let keyword = output.user?.category {
             tagView.setSelectedKeyword(keyword)
