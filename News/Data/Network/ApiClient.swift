@@ -35,14 +35,14 @@ final class ApiClient {
     }
     
     private func buildRequest(for service: NetworkServiceType) -> URLRequest {
-        var url = service.baseURL.appendingPathComponent(service.path)
+        let url = service.baseURL.appendingPathComponent(service.path)
         var urlRequest = URLRequest(url: url)
         
         switch service.method {
             case .get:
-                if let paramString = service.paramters?.toGetParameters {
-                    url = URL(string: service.baseURL.absoluteString + service.path + "?" + paramString)!
-                    urlRequest = URLRequest(url: url)
+                if let paramString = service.paramters?.toGetParameters,
+                    let newUrl = URL(string: service.baseURL.absoluteString + service.path + "?" + paramString) {
+                    urlRequest = URLRequest(url: newUrl)
                 }
             case .post:
                 if let params = service.paramters {

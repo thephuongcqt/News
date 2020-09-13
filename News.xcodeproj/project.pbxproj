@@ -48,11 +48,11 @@
 		BF2D87FD250DBAE300013C9C /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FC250DBAE300013C9C /* UIKit+Extension.swift */; };
 		BF2D87FF250DBD9800013C9C /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FE250DBD9800013C9C /* ArticleDetailViewController.swift */; };
 		BF2D8802250DCD3400013C9C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D8801250DCD3400013C9C /* WebViewController.swift */; };
-		BF2D8804250DDE2600013C9C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D8803250DDE2600013C9C /* RegisterView.swift */; };
 		BF6A306F250DE38C00CEC62B /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A306E250DE38C00CEC62B /* TagView.swift */; };
 		BF6A3072250E076400CEC62B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3071250E076400CEC62B /* RegisterViewController.swift */; };
 		BF6A3074250E078300CEC62B /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3073250E078300CEC62B /* RegisterViewModel.swift */; };
 		BF6A3076250E234E00CEC62B /* PersonalizedNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3075250E234E00CEC62B /* PersonalizedNewsViewModel.swift */; };
+		BF6A3078250E2BFA00CEC62B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3077250E2BFA00CEC62B /* ProfileViewModel.swift */; };
 		E5F203D346225BF1147142D9 /* libPods-NewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 783367E612E57029141F5776 /* libPods-NewsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -117,11 +117,11 @@
 		BF2D87FC250DBAE300013C9C /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		BF2D87FE250DBD9800013C9C /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		BF2D8801250DCD3400013C9C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		BF2D8803250DDE2600013C9C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		BF6A306E250DE38C00CEC62B /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		BF6A3071250E076400CEC62B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BF6A3073250E078300CEC62B /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		BF6A3075250E234E00CEC62B /* PersonalizedNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedNewsViewModel.swift; sourceTree = "<group>"; };
+		BF6A3077250E2BFA00CEC62B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6492CB5772A965049D38D2F /* Pods-NewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.release.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB2C1F8199F0E4BED3968751 /* Pods-NewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				BF15573E250C64C800044FA1 /* ProfileViewController.swift */,
-				BF2D8803250DDE2600013C9C /* RegisterView.swift */,
 				BF6A306E250DE38C00CEC62B /* TagView.swift */,
+				BF6A3077250E2BFA00CEC62B /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -625,7 +625,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF2D8804250DDE2600013C9C /* RegisterView.swift in Sources */,
 				BF15577F250C907B00044FA1 /* Article.swift in Sources */,
 				BF2D87FD250DBAE300013C9C /* UIKit+Extension.swift in Sources */,
 				BF15573B250C641000044FA1 /* Navigator.swift in Sources */,
@@ -656,6 +655,7 @@
 				BF2D87FF250DBD9800013C9C /* ArticleDetailViewController.swift in Sources */,
 				BF155778250C8B0A00044FA1 /* Network+NewsService.swift in Sources */,
 				BF155770250C889300044FA1 /* ViewModelType.swift in Sources */,
+				BF6A3078250E2BFA00CEC62B /* ProfileViewModel.swift in Sources */,
 				BF15577D250C903500044FA1 /* Source.swift in Sources */,
 				BF14651C250C5DEF006C4FB7 /* AppDelegate.swift in Sources */,
 				BF146526250C5DEF006C4FB7 /* News.xcdatamodeld in Sources */,

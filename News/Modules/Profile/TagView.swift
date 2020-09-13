@@ -12,10 +12,10 @@ import TagListView
 import RxSwift
 import RxCocoa
 
-public let kKeywords: [String] = ["bitcoin", "apple", "earthquake", "animal", "crypto", "ethereum", "litecoin", "data science", "information technology"]
+public let kKeywords: Set<String> = ["bitcoin", "apple", "earthquake", "animal", "crypto", "ethereum", "litecoin", "data science", "information technology"]
 
 final class TagView: UIControl, TagListViewDelegate {
-    public var selectedKeyword: String = kKeywords[0]
+    public var selectedKeyword: String = kKeywords.first ?? ""
     private let titleLabel = UILabel()
     private let tagsView = TagListView()
     
@@ -62,7 +62,7 @@ final class TagView: UIControl, TagListViewDelegate {
         tagsView.marginY = 10
         tagsView.paddingX = 15
         tagsView.paddingY = 10
-        tagsView.addTags(kKeywords)
+        tagsView.addTags(Array(kKeywords))
         tagsView.tagBackgroundColor = ColorName.black.color.alpha(0.6)
         tagsView.tagSelectedBackgroundColor = ColorName.blueLink.color
         tagsView.cornerRadius = 10
@@ -75,6 +75,16 @@ final class TagView: UIControl, TagListViewDelegate {
         }
         selectedKeyword = title
         sendActions(for: .valueChanged)
+    }
+    
+    func setSelectedKeyword(_ keyword: String) {
+        tagsView.tagViews.forEach { tag in
+            if tag.titleLabel?.text == keyword {
+                tag.isSelected = true
+            } else {
+                tag.isSelected = false
+            }
+        }
     }
 }
 

@@ -43,6 +43,6 @@ struct RegisterViewModel: ViewModelType {
         let user = User(context: CoreDataManager.shared.persistentContainer.viewContext)
         user.username = username
         user.category = keyword
-        CoreDataManager.shared.saveContext()
+        try? CoreDataManager.shared.saveContext()
     }
 }

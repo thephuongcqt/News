@@ -22,7 +22,7 @@ final class Navigator {
 
     func showRegister() {
         let controller = RegisterViewController()
-        navigationControler.setViewControllers([controller], animated: false)
+        navigationControler.setViewControllers([controller], animated: true)
     }
     
     func showMain() {
@@ -31,6 +31,7 @@ final class Navigator {
         
         let personalViewModel = PersonalizedNewsViewModel()
         let personalController = NewsListViewController(viewModel: personalViewModel)
+        
         let profileController = ProfileViewController()
         
         let mainTabController = MainTabController(
@@ -39,7 +40,7 @@ final class Navigator {
             profile: profileController
         )
         
-        navigationControler.setViewControllers([mainTabController], animated: false)
+        navigationControler.setViewControllers([mainTabController], animated: true)
     }
     
     func toActicleDetail(_ article: Article) {
