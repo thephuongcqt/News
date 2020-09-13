@@ -66,8 +66,8 @@ final class NewsListViewController: UIViewController {
         tableView.register(cellType: NewsCell.self)
         
         indicatorView.style = .whiteLarge
-        indicatorView.color = ColorName.black.color
-        indicatorView.backgroundColor = ColorName.neutral2.color
+        indicatorView.color = ColorName.white.color
+        indicatorView.backgroundColor = ColorName.black.color.alpha(0.6)
         indicatorView.layer.cornerRadius = 10
     }
     
@@ -113,6 +113,11 @@ final class NewsListViewController: UIViewController {
             }
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+        tableView.rx.modelSelected(Article.self)
+            .subscribeNext { article in
+                Navigator.shared.toActicleDetail(article)
+            }
             .disposed(by: bag)
         
         refreshControl.sendActions(for: .valueChanged)

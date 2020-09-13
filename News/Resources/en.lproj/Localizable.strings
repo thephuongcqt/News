@@ -1,3 +1,7 @@
+"article_author" = "Author: ";
+
+"article_author_placeholder" = "Unknown";
+
 "rss_hours_ago" = "hours ago";
 
 "rss_just_now" = "just now";

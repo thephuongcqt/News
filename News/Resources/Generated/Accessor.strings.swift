@@ -10,6 +10,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// Author: 
+  public static let articleAuthor = L10n.tr("Localizable", "article_author")
+  /// Unknown
+  public static let articleAuthorPlaceholder = L10n.tr("Localizable", "article_author_placeholder")
   /// hours ago
   public static let rssHoursAgo = L10n.tr("Localizable", "rss_hours_ago")
   /// just now

@@ -34,5 +34,10 @@ final class Navigator {
         
         navigationControler.setViewControllers([mainTabController], animated: false)
     }
+    
+    func toActicleDetail(_ article: Article) {
+        let controller = ArticleDetailViewController(article: article)
+        navigationControler.pushViewController(controller, animated: true)
+    }
 }
 
