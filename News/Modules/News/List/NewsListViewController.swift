@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
 
 final class NewsListViewController: UIViewController {
@@ -16,7 +17,7 @@ final class NewsListViewController: UIViewController {
     private let indicatorView = UIActivityIndicatorView()
     private let viewModel: NewsListViewModel
     private let bag = DisposeBag()
-    private var currentPage = 1
+    private var currentPage = kFirstPage
     
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<NewsListSection>(
         configureCell: { dataSource, tableView, indexPath, article in
@@ -37,9 +38,11 @@ final class NewsListViewController: UIViewController {
     }
     
     override func loadView() {
+        let mainView = UIView()
+        mainView.addSubview(tableView)
+        mainView.addSubview(indicatorView)
         tableView.addSubview(refreshControl)
-        tableView.addSubview(indicatorView)
-        view = tableView
+        view = mainView
         visualize()
     }
     
@@ -53,6 +56,7 @@ final class NewsListViewController: UIViewController {
         
         indicatorView.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         indicatorView.center = view.center
+        tableView.frame = view.bounds
     }
     
     func visualize() {
@@ -74,42 +78,33 @@ final class NewsListViewController: UIViewController {
     private func bind() {
         let refreshTrigger = refreshControl.rx.controlEvent(.valueChanged).asObservable()
         let loadMore = tableView.rx.contentOffset
-            .flatMap { [weak self] point -> Observable<Int> in
-                guard let self = self else {
+            .flatMapLatest { [weak self] point -> Observable<Int> in
+                guard let self = self, self.view.isUserInteractionEnabled else {
                     return .empty()
                 }
                 let loadMoreThreshold: CGFloat = self.tableView.frame.height * 0.3
                 let needToLoadMore = point.y + self.tableView.frame.height + loadMoreThreshold >= self.tableView.contentSize.height
                 return needToLoadMore ? .just(self.currentPage + 1) : .empty()
             }
-            .distinctUntilChanged()
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
         
         let input = NewsListViewModel.Input(refreshTrigger: refreshTrigger, loadMoreTrigger: loadMore)
         let output = viewModel.transform(input: input)
         
+        Driver.merge(output.refreshProcessing, output.loadMoreProcessing)
+            .map { !$0 }
+            .drive(view.rx.isUserInteractionEnabled)
+            .disposed(by: bag)
         output.loadMoreProcessing
-            .doNext{ [weak self] processing in
-                if !processing {
-                    self?.currentPage += 1
-                }
-            }
             .drive(indicatorView.rx.isAnimating)
             .disposed(by: bag)
         output.refreshProcessing
-            .doNext{ [weak self] processing in
-                if !processing {
-                    self?.currentPage = 1
-                }
-            }
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: bag)
-        output.error
-            .subscribe(onNext: { error in
-                debugPrint(">> Error: \(error)")
-            }).disposed(by: bag)
         output.articles
-            .map { acticles in
-                [NewsListSection(items: acticles)]
+            .map { [weak self] acticles in
+                self?.currentPage = acticles.count / kPageSize
+                return [NewsListSection(items: acticles)]
             }
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items(dataSource: dataSource))
@@ -119,6 +114,10 @@ final class NewsListViewController: UIViewController {
                 Navigator.shared.toActicleDetail(article)
             }
             .disposed(by: bag)
+        output.error
+            .subscribe(onNext: { error in
+                debugPrint(">> Error: \(error)")
+            }).disposed(by: bag)
         
         refreshControl.sendActions(for: .valueChanged)
         refreshControl.endRefreshing()

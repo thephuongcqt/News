@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private let kFirstPage: Int = 1
+public let kFirstPage: Int = 1
 
 class NewsListViewModel: ViewModelType {
     struct Input {
@@ -29,7 +29,7 @@ class NewsListViewModel: ViewModelType {
         let refreshProcessing = ActivityIndicator()
         let loadMoreProcessing = ActivityIndicator()
         
-        let firstPageResult = input.refreshTrigger
+        let firstPageEvent = input.refreshTrigger
             .flatMapLatest { [weak self] _ -> Observable<Event<[Article]>> in
                 guard let self = self else {
                     return .empty()
@@ -39,10 +39,10 @@ class NewsListViewModel: ViewModelType {
                     .trackActivity(refreshProcessing)
             }
             .share()
-        let refreshError = firstPageResult.compactMap { $0.error }
-        let firstPageObservable = firstPageResult.compactMap { $0.element }
+        let refreshError = firstPageEvent.compactMap { $0.error }
+        let firstPageObservable = firstPageEvent.compactMap { $0.element }
         
-        let loadMoreResult = input.loadMoreTrigger
+        let loadMoreEvent = input.loadMoreTrigger
             .flatMapLatest { [weak self] page -> Observable<Event<[Article]>> in
                 guard let self = self else {
                     return .empty()
@@ -52,19 +52,16 @@ class NewsListViewModel: ViewModelType {
                     .trackActivity(loadMoreProcessing)
             }
             .share()
-        let loadMoreError = loadMoreResult.compactMap { $0.error }
-        let loadMoreObservable = firstPageObservable
-            .flatMapLatest { _ in
-                loadMoreResult.compactMap { $0.element }
-            }
+        let loadMoreError = loadMoreEvent.compactMap { $0.error }
+        let loadMoreObservable = loadMoreEvent.compactMap { $0.element }
         
         let articleObservable = firstPageObservable
             .flatMapLatest { articles -> Observable<[Article]> in
                 let firstPage = Observable.just(articles)
                 return Observable.concat(firstPage, loadMoreObservable)
-            }
-            .scan([]) { (last, new) -> [Article] in
-                last + new
+                    .scan([]) { (last, new) -> [Article] in
+                        last + new
+                    }
             }
         
         return Output(

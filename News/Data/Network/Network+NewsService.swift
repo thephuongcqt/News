@@ -10,7 +10,7 @@ import Foundation
 
 private let kBaseUrl: String = "http://newsapi.org/"
 private let kPublicKey: String = "566e1e58a3f24f98b1267f9bc7af1710"
-private let kPageSize: Int = 10
+public let kPageSize: Int = 10
 
 extension NewsService: NetworkServiceType {
     public var baseURL: URL {

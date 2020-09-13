@@ -41,16 +41,16 @@ final class ApiClient {
         switch service.method {
             case .get:
                 if let paramString = service.paramters?.toGetParameters,
-                    let newUrl = URL(string: service.baseURL.absoluteString + service.path + "?" + paramString) {
+                    let urlString = (service.baseURL.absoluteString + service.path + "?" + paramString).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let newUrl = URL(string: urlString) {                                        
                     urlRequest = URLRequest(url: newUrl)
                 }
-            case .post:
+            case .post, .put:
                 if let params = service.paramters {
                     urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: params as Any, options: .prettyPrinted)
                 }
             default:
-                debugPrint("TODO: ")
-                // TODO: implement for PUT, DELETE
+                debugPrint("default")
         }
         urlRequest.httpMethod = service.method.http
         urlRequest.allHTTPHeaderFields = service.headers
