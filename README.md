@@ -40,5 +40,4 @@
 ## Demo
 [Video Demo](https://streamable.com/2junq1)
 
-![alt text](./Demo/localize_en.PNG "English")
-![alt text](./Demo/localize_vi.PNG "Vietnamese")
+<img src="./Demo/localize_en.PNG" width="425"/> <img src="./Demo/localize_vi.PNG" width="425"/> 
