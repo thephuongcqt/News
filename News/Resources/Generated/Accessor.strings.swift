@@ -14,6 +14,8 @@ public enum L10n {
   public static let articleAuthor = L10n.tr("Localizable", "article_author")
   /// Unknown
   public static let articleAuthorPlaceholder = L10n.tr("Localizable", "article_author_placeholder")
+  /// Open original news
+  public static let buttonOpenOriginNews = L10n.tr("Localizable", "button_open_origin_news")
   /// hours ago
   public static let rssHoursAgo = L10n.tr("Localizable", "rss_hours_ago")
   /// just now

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
 
 final class ArticleDetailViewController: UIViewController {
     private let scrollView = UIScrollView()
@@ -19,7 +20,9 @@ final class ArticleDetailViewController: UIViewController {
     private let publishDate = UILabel()
     private let imageView = UIImageView()
     private let contentLabel = UILabel()
+    private let originNewsButton = UIButton()
     private let article: Article
+    private let bag = DisposeBag()
     
     init(article: Article) {
         self.article = article
@@ -39,10 +42,12 @@ final class ArticleDetailViewController: UIViewController {
         containerView.addSubview(publishDate)
         containerView.addSubview(imageView)
         containerView.addSubview(contentLabel)
+        containerView.addSubview(originNewsButton)
         view = scrollView
         
         visualize()
         setupConstraints()
+        bind()
     }
     
     private func visualize() {
@@ -68,7 +73,7 @@ final class ArticleDetailViewController: UIViewController {
         publishDate.font = FontFamily.SFProDisplay.regular.font(size: 13)
         publishDate.textColor = ColorName.black.color.alpha(0.6)
         publishDate.numberOfLines = 1
-        publishDate.textAlignment = .left        
+        publishDate.textAlignment = .left
         
         let font = FontFamily.SFProDisplay.regular.font(size: 18)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -85,7 +90,11 @@ final class ArticleDetailViewController: UIViewController {
         contentLabel.numberOfLines = 0
         
         imageView.kf.setImage(with: URL(string: article.urlToImage ?? ""))
+        imageView.backgroundColor = ColorName.neutral2.color
         imageView.contentMode = .scaleAspectFill
+            
+        originNewsButton.setTitle(L10n.buttonOpenOriginNews, for: .normal)
+        originNewsButton.setTitleColor(ColorName.blueLink.color, for: .normal)
     }
     
     private func setupConstraints() {
@@ -130,7 +139,26 @@ final class ArticleDetailViewController: UIViewController {
             maker.leading.equalToSuperview().offset(12)
             maker.top.equalTo(imageView.snp.bottom).offset(12)
             maker.trailing.equalToSuperview().offset(-12)
+        }
+        
+        originNewsButton.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview().offset(16)
+            maker.top.equalTo(contentLabel.snp.bottom).offset(16)
+            maker.trailing.equalToSuperview().offset(-16)
+            maker.height.equalTo(44)
             maker.bottom.equalToSuperview().offset(-12)
         }
+    }
+    
+    private func bind() {
+        originNewsButton.rx.tap
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .subscribeNext { [weak self] _ in
+                guard let self = self, let url = URL(string: self.article.url) else {
+                    return
+                }
+                Navigator.shared.openWebView(with: url)
+            }
+            .disposed(by: bag)
     }
 }

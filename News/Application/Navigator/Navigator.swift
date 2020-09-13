@@ -39,5 +39,10 @@ final class Navigator {
         let controller = ArticleDetailViewController(article: article)
         navigationControler.pushViewController(controller, animated: true)
     }
+    
+    func openWebView(with url: URL) {
+        let controller = WebViewController(url: url)
+        navigationControler.pushViewController(controller, animated: true)
+    }
 }
 
