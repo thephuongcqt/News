@@ -4,6 +4,8 @@
 
 "button_open_origin_news" = "Xem bài viết gốc";
 
+"register_button_title" = "Đăng ký";
+
 "rss_hours_ago" = "giờ trước";
 
 "rss_just_now" = "Vừa xong";
@@ -15,3 +17,7 @@
 "tabbar_personalized_news_title" = "Tin cho bạn";
 
 "tabbar_profile_title" = "Cá nhân";
+
+"tag_view_title" = "Hãy chọn chủ để mà bạn yêu thích";
+
+"username_textfield_placeholder" = "Vui lòng nhập tên đăng nhập";

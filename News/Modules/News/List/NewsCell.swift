@@ -45,6 +45,8 @@ final class NewsCell: UITableViewCell, Reusable {
     }
     
     private func visualize() {
+        selectionStyle = .none
+        
         thumbnailImageView.backgroundColor = ColorName.neutral2.color
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.layer.cornerRadius = 8

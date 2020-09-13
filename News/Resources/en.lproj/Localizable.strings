@@ -4,6 +4,8 @@
 
 "button_open_origin_news" = "Open original news";
 
+"register_button_title" = "Register";
+
 "rss_hours_ago" = "hours ago";
 
 "rss_just_now" = "just now";
@@ -15,3 +17,7 @@
 "tabbar_personalized_news_title" = "Your News";
 
 "tabbar_profile_title" = "Profile";
+
+"tag_view_title" = "Please choose your own category";
+
+"username_textfield_placeholder" = "Please enter your username";

@@ -47,7 +47,10 @@ struct NewsListViewModel: ViewModelType {
             }
             .share()
         let loadMoreError = loadMoreResult.compactMap { $0.error }
-        let loadMoreObservable = loadMoreResult.compactMap { $0.element }
+        let loadMoreObservable = firstPageObservable
+            .flatMapLatest { _ in
+                loadMoreResult.compactMap { $0.element }
+            }
         
         let articleObservable = firstPageObservable
             .flatMapLatest { articles -> Observable<[Article]> in
@@ -77,4 +80,9 @@ struct NewsListViewModel: ViewModelType {
                 }
             }
     }
+}
+
+enum NewsModelType {
+    case headlines
+    case customized
 }

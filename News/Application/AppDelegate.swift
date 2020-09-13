@@ -19,12 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = Navigator.shared.window
         window?.makeKeyAndVisible()
         
-        Navigator.shared.showMain()
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.makeKeyAndVisible()
-//
-//        let rootViewController = UINavigationController(rootViewController: ViewController())
-//        window?.rootViewController = rootViewController
+        if let _ = CoreDataManager.shared.getCurrentUser() {
+            Navigator.shared.showMain()
+        } else {
+            Navigator.shared.showRegister()
+        }
         
         return true
     }

@@ -56,4 +56,11 @@ final class CoreDataManager {
             }
         }
     }
+    
+    func getCurrentUser() -> User? {
+        let request = User.makeFetchRequest()
+        request.fetchLimit = 1
+        
+        return try? persistentContainer.viewContext.fetch(request).first
+    }
 }

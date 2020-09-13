@@ -46,9 +46,13 @@
 		BF15578E250D3C1300044FA1 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15578D250D3C1300044FA1 /* ActivityIndicator.swift */; };
 		BF2D87F9250DABAD00013C9C /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87F8250DABAD00013C9C /* Rx.swift */; };
 		BF2D87FB250DB4B000013C9C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FA250DB4B000013C9C /* Date+Extension.swift */; };
-		BF2D87FD250DBAE300013C9C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FC250DBAE300013C9C /* Color+Extension.swift */; };
+		BF2D87FD250DBAE300013C9C /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FC250DBAE300013C9C /* UIKit+Extension.swift */; };
 		BF2D87FF250DBD9800013C9C /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D87FE250DBD9800013C9C /* ArticleDetailViewController.swift */; };
 		BF2D8802250DCD3400013C9C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D8801250DCD3400013C9C /* WebViewController.swift */; };
+		BF2D8804250DDE2600013C9C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D8803250DDE2600013C9C /* RegisterView.swift */; };
+		BF6A306F250DE38C00CEC62B /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A306E250DE38C00CEC62B /* TagView.swift */; };
+		BF6A3072250E076400CEC62B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3071250E076400CEC62B /* RegisterViewController.swift */; };
+		BF6A3074250E078300CEC62B /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3073250E078300CEC62B /* RegisterViewModel.swift */; };
 		E5F203D346225BF1147142D9 /* libPods-NewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 783367E612E57029141F5776 /* libPods-NewsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -111,9 +115,13 @@
 		BF15578D250D3C1300044FA1 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		BF2D87F8250DABAD00013C9C /* Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rx.swift; sourceTree = "<group>"; };
 		BF2D87FA250DB4B000013C9C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		BF2D87FC250DBAE300013C9C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		BF2D87FC250DBAE300013C9C /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		BF2D87FE250DBD9800013C9C /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		BF2D8801250DCD3400013C9C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		BF2D8803250DDE2600013C9C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		BF6A306E250DE38C00CEC62B /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		BF6A3071250E076400CEC62B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		BF6A3073250E078300CEC62B /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C6492CB5772A965049D38D2F /* Pods-NewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.release.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB2C1F8199F0E4BED3968751 /* Pods-NewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +211,7 @@
 		BF146541250C6007006C4FB7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				BF6A3070250E073C00CEC62B /* Register */,
 				BF2D8800250DCD2A00013C9C /* WebView */,
 				BF15576E250C888B00044FA1 /* Common */,
 				BF155742250C662A00044FA1 /* Personal */,
@@ -276,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				BF15573E250C64C800044FA1 /* ProfileViewController.swift */,
+				BF2D8803250DDE2600013C9C /* RegisterView.swift */,
+				BF6A306E250DE38C00CEC62B /* TagView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -397,7 +408,7 @@
 				BF15578D250D3C1300044FA1 /* ActivityIndicator.swift */,
 				BF2D87F8250DABAD00013C9C /* Rx.swift */,
 				BF2D87FA250DB4B000013C9C /* Date+Extension.swift */,
-				BF2D87FC250DBAE300013C9C /* Color+Extension.swift */,
+				BF2D87FC250DBAE300013C9C /* UIKit+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,6 +419,15 @@
 				BF2D8801250DCD3400013C9C /* WebViewController.swift */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		BF6A3070250E073C00CEC62B /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				BF6A3071250E076400CEC62B /* RegisterViewController.swift */,
+				BF6A3073250E078300CEC62B /* RegisterViewModel.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		F2DDE4279A97334E885C290D /* Frameworks */ = {
@@ -613,12 +633,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2D8804250DDE2600013C9C /* RegisterView.swift in Sources */,
 				BF15577F250C907B00044FA1 /* Article.swift in Sources */,
-				BF2D87FD250DBAE300013C9C /* Color+Extension.swift in Sources */,
+				BF2D87FD250DBAE300013C9C /* UIKit+Extension.swift in Sources */,
 				BF15573B250C641000044FA1 /* Navigator.swift in Sources */,
 				BF15578B250CD12E00044FA1 /* UITableView+Reusable.swift in Sources */,
 				BF146543250C6021006C4FB7 /* MainTabController.swift in Sources */,
 				BF15576D250C886200044FA1 /* NewsListViewModel.swift in Sources */,
+				BF6A3074250E078300CEC62B /* RegisterViewModel.swift in Sources */,
 				BF155789250CD0E800044FA1 /* Reusable.swift in Sources */,
 				BF15573D250C649F00044FA1 /* NewsListViewController.swift in Sources */,
 				BF155773250C8A4900044FA1 /* ApiClient.swift in Sources */,
@@ -628,7 +650,9 @@
 				BF155760250C70C800044FA1 /* Accessor.colors.swift in Sources */,
 				BF15577A250C8D3C00044FA1 /* NetworkServiceType.swift in Sources */,
 				BF155768250C7BA400044FA1 /* Localize.swift in Sources */,
+				BF6A3072250E076400CEC62B /* RegisterViewController.swift in Sources */,
 				BF2D8802250DCD3400013C9C /* WebViewController.swift in Sources */,
+				BF6A306F250DE38C00CEC62B /* TagView.swift in Sources */,
 				BF15575E250C70C800044FA1 /* CoreData.swift in Sources */,
 				BF155765250C7AEC00044FA1 /* CoreDataManager.swift in Sources */,
 				BF2D87FB250DB4B000013C9C /* Date+Extension.swift in Sources */,

@@ -6,6 +6,7 @@ target 'News' do
   pod 'RxDataSources', '~> 4.0'
   pod 'Kingfisher', '~> 5'
   pod 'SnapKit', '~> 5'
+  pod 'TagListView', '~> 1.0'
   
   target 'NewsTests' do
     inherit! :search_paths

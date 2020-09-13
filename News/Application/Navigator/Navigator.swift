@@ -20,6 +20,10 @@ final class Navigator {
         return window
     }()
 
+    func showRegister() {
+        let controller = RegisterViewController()
+        navigationControler.setViewControllers([controller], animated: false)
+    }
     
     func showMain() {
         let newsListController = NewsListViewController()

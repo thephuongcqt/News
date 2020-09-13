@@ -27,11 +27,7 @@ final class MainTabController: UITabBarController {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-//    override func loadView() {
-//        super.loadView()
-//    }
+    }    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +37,7 @@ final class MainTabController: UITabBarController {
     private func visualize() {
         tabBar.isTranslucent = true
         tabBar.barTintColor = ColorName.white.color
-        tabBar.tintColor = ColorName.black.color
+        tabBar.tintColor = ColorName.blueLink.color
         tabBar.barStyle = .black
         tabBar.selectionIndicatorImage = UIImage()
         tabBar.unselectedItemTintColor = ColorName.black.color
