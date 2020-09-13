@@ -8,11 +8,23 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class NewsListViewController: UIViewController {
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
+    private let indicatorView = UIActivityIndicatorView()
     private let viewModel: NewsListViewModel
     private let bag = DisposeBag()
+    private var currentPage = 0
+    
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<NewsListSection>(
+        configureCell: { dataSource, tableView, indexPath, article in
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: NewsCell.self)
+            cell.article = article
+            return cell
+        }
+    )
     
     init(viewModel: NewsListViewModel = NewsListViewModel()) {
         self.viewModel = viewModel
@@ -25,25 +37,98 @@ final class NewsListViewController: UIViewController {
     }
     
     override func loadView() {
+        tableView.addSubview(refreshControl)
+        tableView.addSubview(indicatorView)
         view = tableView
+        visualize()
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-                
-        view.backgroundColor = .red
+        super.viewDidLoad()                
         bind()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        indicatorView.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        indicatorView.center = view.center
+    }
+    
+    func visualize() {
+        title = L10n.tabbarNewsListTitle
+        edgesForExtendedLayout = []
+        view.backgroundColor = ColorName.neutral2.color
+        tableView.backgroundColor = ColorName.neutral2.color
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(cellType: NewsCell.self)
+        
+        indicatorView.style = .whiteLarge
+        indicatorView.color = ColorName.black.color
+        indicatorView.backgroundColor = ColorName.neutral2.color
+        indicatorView.layer.cornerRadius = 10
+    }
+    
     private func bind() {
-//        let articles: Observable<ArticlesResponse> = ApiClient.shared.request(service: NewsService.topHeadlines(page: 0))
-//        articles.subscribe(
-//            onNext: { response in
-//                debugPrint(response)
-//            },
-//            onError: { error in
-//                debugPrint(error)
-//            }
-//        )
+        let refreshTrigger = refreshControl.rx.controlEvent(.valueChanged).asObservable()
+        let loadMore = tableView.rx.contentOffset
+            .flatMap { [weak self] point -> Observable<Int> in
+                guard let self = self else {
+                    return .empty()
+                }
+                let loadMoreThreshold: CGFloat = self.tableView.frame.height * 0.3
+                let needToLoadMore = point.y + self.tableView.frame.height + loadMoreThreshold >= self.tableView.contentSize.height
+                return needToLoadMore ? .just(self.currentPage + 1) : .empty()
+            }
+            .distinctUntilChanged()
+        
+        let input = NewsListViewModel.Input(refreshTrigger: refreshTrigger, loadMoreTrigger: loadMore)
+        let output = viewModel.transform(input: input)
+        
+        output.loadMoreProcessing
+            .doNext{ [weak self] processing in
+                if !processing {
+                    self?.currentPage += 1
+                }
+            }
+            .drive(indicatorView.rx.isAnimating)
+            .disposed(by: bag)
+        output.refreshProcessing
+            .doNext{ [weak self] processing in
+                if !processing {
+                    self?.currentPage = 1
+                }
+            }
+            .drive(refreshControl.rx.isRefreshing)
+            .disposed(by: bag)
+        output.error
+            .subscribe(onNext: { error in
+                debugPrint(">> Error: \(error)")
+            }).disposed(by: bag)
+        output.articles
+            .map { acticles in
+                [NewsListSection(items: acticles)]
+            }
+            .asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+        
+        refreshControl.sendActions(for: .valueChanged)
+        refreshControl.endRefreshing()
+    }
+}
+
+struct NewsListSection: SectionModelType {
+    var items: [Article]
+    
+    init(items: [Article]) {
+        self.items = items
+    }
+    
+    init(original: NewsListSection, items: [Article]) {
+        self = original
+        self.items = items
     }
 }

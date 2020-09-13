@@ -15,9 +15,9 @@ final class ApiClient {
     private let decoder = JSONDecoder()
     
     static let shared = ApiClient()
-    
-    func request<ResponseType: Codable>(service: NetworkServiceType) -> Observable<ResponseType> {
-        let urlRequest = buildRequest(service: service)
+        
+    func request<ResponseType: Codable>(for service: NetworkServiceType, type: ResponseType.Type = ResponseType.self) -> Observable<ResponseType> {
+        let urlRequest = buildRequest(for: service)
         
         return urlSession.rx.data(request: urlRequest)
             .flatMap{ [weak self] data -> Observable<ResponseType> in
@@ -34,7 +34,7 @@ final class ApiClient {
             }
     }
     
-    private func buildRequest(service: NetworkServiceType) -> URLRequest {
+    private func buildRequest(for service: NetworkServiceType) -> URLRequest {
         var url = service.baseURL.appendingPathComponent(service.path)
         var urlRequest = URLRequest(url: url)
         
@@ -62,4 +62,5 @@ final class ApiClient {
 enum NetworkError: Swift.Error {
     case urlNotFound
     case decodeError(error: Error)
+    case serverError
 }

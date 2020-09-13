@@ -10,6 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// hours ago
+  public static let rssHoursAgo = L10n.tr("Localizable", "rss_hours_ago")
+  /// just now
+  public static let rssJustNow = L10n.tr("Localizable", "rss_just_now")
+  /// minutes ago
+  public static let rssMinutesAgo = L10n.tr("Localizable", "rss_minutes_ago")
   /// News
   public static let tabbarNewsListTitle = L10n.tr("Localizable", "tabbar_news_list_title")
   /// Your News

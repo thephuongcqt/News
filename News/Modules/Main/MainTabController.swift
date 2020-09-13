@@ -29,27 +29,38 @@ final class MainTabController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        super.loadView()
-        
+//    override func loadView() {
+//        super.loadView()
+//    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         visualize()
     }
     
     private func visualize() {
+        tabBar.isTranslucent = true
+        tabBar.barTintColor = ColorName.white.color
+        tabBar.tintColor = ColorName.black.color
+        tabBar.barStyle = .black
+        tabBar.selectionIndicatorImage = UIImage()
+        tabBar.unselectedItemTintColor = ColorName.black.color
+        tabBar.backgroundColor = .clear
+        
         newsListController.tabBarItem = UITabBarItem(
             title: L10n.tabbarNewsListTitle,
-            image: Asset.icHome.image,
-            selectedImage: Asset.icHome.image
+            image: Asset.tabHome.image,
+            selectedImage: Asset.tabHome.image
         )
         personalizedNewsController.tabBarItem = UITabBarItem(
             title: L10n.tabbarPersonalizedNewsTitle,
-            image: Asset.icNews.image,
-            selectedImage: Asset.icNews.image
+            image: Asset.icExplorer.image,
+            selectedImage: Asset.icExplorer.image
         )
         profileController.tabBarItem = UITabBarItem(
             title: L10n.tabbarProfileTitle,
-            image: Asset.icNews.image,
-            selectedImage: Asset.icNews.image
+            image: Asset.tabProfile.image,
+            selectedImage: Asset.tabProfile.image
         )
         
         setViewControllers(

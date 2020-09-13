@@ -17,4 +17,8 @@ struct Article: Codable {
     let urlToImage: String?
     let publishedAt: String
     let content: String?
+    
+    var publishedDate: Date? {
+        dateFormatter.date(from: publishedAt)
+    }        
 }

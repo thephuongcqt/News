@@ -12,11 +12,16 @@ import UIKit
 final class PersonalizedNewsController: UIViewController {
     override func loadView() {
         view = UIView()
+        visualize()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         view.backgroundColor = .lightGray
+    }
+    
+    private func visualize() {
+        title = L10n.tabbarPersonalizedNewsTitle
     }
 }

@@ -11,11 +11,16 @@ import UIKit
 final class ProfileViewController: UIViewController {
     override func loadView() {
         view = UIView()
+        visualize()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         view.backgroundColor = .cyan
+    }
+    
+    private func visualize() {
+        title = L10n.tabbarProfileTitle
     }
 }
