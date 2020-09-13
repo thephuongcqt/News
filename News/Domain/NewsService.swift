@@ -10,5 +10,5 @@ import Foundation
 
 public enum NewsService {
     case topHeadlines(page: Int)
-    case everything
+    case everything(keyword: String, page: Int)
 }

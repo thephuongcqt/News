@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private let kFirstPage: Int = 0
+private let kFirstPage: Int = 1
 
-struct NewsListViewModel: ViewModelType {
+class NewsListViewModel: ViewModelType {
     struct Input {
         let refreshTrigger: Observable<Void>
         let loadMoreTrigger: Observable<Int>
@@ -30,8 +30,11 @@ struct NewsListViewModel: ViewModelType {
         let loadMoreProcessing = ActivityIndicator()
         
         let firstPageResult = input.refreshTrigger
-            .flatMapLatest {
-                self.loadData(for: kFirstPage)
+            .flatMapLatest { [weak self] _ -> Observable<Event<[Article]>> in
+                guard let self = self else {
+                    return .empty()
+                }
+                return self.loadData(for: kFirstPage)
                     .materialize()
                     .trackActivity(refreshProcessing)
             }
@@ -40,8 +43,11 @@ struct NewsListViewModel: ViewModelType {
         let firstPageObservable = firstPageResult.compactMap { $0.element }
         
         let loadMoreResult = input.loadMoreTrigger
-            .flatMapLatest { page  in
-                self.loadData(for: page)
+            .flatMapLatest { [weak self] page -> Observable<Event<[Article]>> in
+                guard let self = self else {
+                    return .empty()
+                }
+                return self.loadData(for: page)
                     .materialize()
                     .trackActivity(loadMoreProcessing)
             }
@@ -70,7 +76,8 @@ struct NewsListViewModel: ViewModelType {
     }
     
     private func loadData(for page: Int) -> Observable<[Article]> {
-        let service = NewsService.topHeadlines(page: page)
+        let service = getService(page: page)
+        
         return ApiClient.shared.request(for: service, type: ArticlesResponse.self)
             .flatMap { response -> Observable<[Article]> in
                 if response.isSuccess {
@@ -80,9 +87,8 @@ struct NewsListViewModel: ViewModelType {
                 }
             }
     }
-}
-
-enum NewsModelType {
-    case headlines
-    case customized
+    
+    func getService(page: Int) -> NewsService {
+        .topHeadlines(page: page)
+    }
 }

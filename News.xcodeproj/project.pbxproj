@@ -17,7 +17,6 @@
 		BF15573B250C641000044FA1 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15573A250C641000044FA1 /* Navigator.swift */; };
 		BF15573D250C649F00044FA1 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15573C250C649F00044FA1 /* NewsListViewController.swift */; };
 		BF15573F250C64C800044FA1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15573E250C64C800044FA1 /* ProfileViewController.swift */; };
-		BF155744250C664500044FA1 /* PersonalizedNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF155743250C664500044FA1 /* PersonalizedNewsController.swift */; };
 		BF155747250C6C9800044FA1 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF155746250C6C9800044FA1 /* colors.txt */; };
 		BF15574D250C6D1400044FA1 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF155749250C6D1400044FA1 /* SFProDisplay-Medium.ttf */; };
 		BF15574E250C6D1400044FA1 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF15574A250C6D1400044FA1 /* SFProDisplay-Bold.ttf */; };
@@ -53,6 +52,7 @@
 		BF6A306F250DE38C00CEC62B /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A306E250DE38C00CEC62B /* TagView.swift */; };
 		BF6A3072250E076400CEC62B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3071250E076400CEC62B /* RegisterViewController.swift */; };
 		BF6A3074250E078300CEC62B /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3073250E078300CEC62B /* RegisterViewModel.swift */; };
+		BF6A3076250E234E00CEC62B /* PersonalizedNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3075250E234E00CEC62B /* PersonalizedNewsViewModel.swift */; };
 		E5F203D346225BF1147142D9 /* libPods-NewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 783367E612E57029141F5776 /* libPods-NewsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +84,6 @@
 		BF15573A250C641000044FA1 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		BF15573C250C649F00044FA1 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		BF15573E250C64C800044FA1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		BF155743250C664500044FA1 /* PersonalizedNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedNewsController.swift; sourceTree = "<group>"; };
 		BF155746250C6C9800044FA1 /* colors.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = colors.txt; sourceTree = "<group>"; };
 		BF155749250C6D1400044FA1 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		BF15574A250C6D1400044FA1 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
@@ -122,6 +121,7 @@
 		BF6A306E250DE38C00CEC62B /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		BF6A3071250E076400CEC62B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BF6A3073250E078300CEC62B /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		BF6A3075250E234E00CEC62B /* PersonalizedNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedNewsViewModel.swift; sourceTree = "<group>"; };
 		C6492CB5772A965049D38D2F /* Pods-NewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.release.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB2C1F8199F0E4BED3968751 /* Pods-NewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,7 +214,6 @@
 				BF6A3070250E073C00CEC62B /* Register */,
 				BF2D8800250DCD2A00013C9C /* WebView */,
 				BF15576E250C888B00044FA1 /* Common */,
-				BF155742250C662A00044FA1 /* Personal */,
 				BF155739250C63C900044FA1 /* Profile */,
 				BF155736250C636E00044FA1 /* News */,
 				BF155735250C632200044FA1 /* Main */,
@@ -268,6 +267,7 @@
 			children = (
 				BF15573C250C649F00044FA1 /* NewsListViewController.swift */,
 				BF15576C250C886200044FA1 /* NewsListViewModel.swift */,
+				BF6A3075250E234E00CEC62B /* PersonalizedNewsViewModel.swift */,
 				BF155785250CD06600044FA1 /* NewsCell.swift */,
 			);
 			path = List;
@@ -289,14 +289,6 @@
 				BF6A306E250DE38C00CEC62B /* TagView.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		BF155742250C662A00044FA1 /* Personal */ = {
-			isa = PBXGroup;
-			children = (
-				BF155743250C664500044FA1 /* PersonalizedNewsController.swift */,
-			);
-			path = Personal;
 			sourceTree = "<group>";
 		};
 		BF155745250C6C8000044FA1 /* Color */ = {
@@ -639,6 +631,7 @@
 				BF15573B250C641000044FA1 /* Navigator.swift in Sources */,
 				BF15578B250CD12E00044FA1 /* UITableView+Reusable.swift in Sources */,
 				BF146543250C6021006C4FB7 /* MainTabController.swift in Sources */,
+				BF6A3076250E234E00CEC62B /* PersonalizedNewsViewModel.swift in Sources */,
 				BF15576D250C886200044FA1 /* NewsListViewModel.swift in Sources */,
 				BF6A3074250E078300CEC62B /* RegisterViewModel.swift in Sources */,
 				BF155789250CD0E800044FA1 /* Reusable.swift in Sources */,
@@ -661,7 +654,6 @@
 				BF155784250CB99000044FA1 /* ArticlesResponse.swift in Sources */,
 				BF155776250C8A9900044FA1 /* NewsService.swift in Sources */,
 				BF2D87FF250DBD9800013C9C /* ArticleDetailViewController.swift in Sources */,
-				BF155744250C664500044FA1 /* PersonalizedNewsController.swift in Sources */,
 				BF155778250C8B0A00044FA1 /* Network+NewsService.swift in Sources */,
 				BF155770250C889300044FA1 /* ViewModelType.swift in Sources */,
 				BF15577D250C903500044FA1 /* Source.swift in Sources */,

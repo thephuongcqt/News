@@ -10,12 +10,12 @@ import UIKit
 
 final class MainTabController: UITabBarController {
     private let newsListController: NewsListViewController
-    private let personalizedNewsController: PersonalizedNewsController
+    private let personalizedNewsController: NewsListViewController
     private let profileController: ProfileViewController
     
     init(
         newsList: NewsListViewController,
-        personalizedNews: PersonalizedNewsController,
+        personalizedNews: NewsListViewController,
         profile: ProfileViewController
     ) {
         newsListController = newsList

@@ -16,7 +16,7 @@ final class NewsListViewController: UIViewController {
     private let indicatorView = UIActivityIndicatorView()
     private let viewModel: NewsListViewModel
     private let bag = DisposeBag()
-    private var currentPage = 0
+    private var currentPage = 1
     
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<NewsListSection>(
         configureCell: { dataSource, tableView, indexPath, article in
@@ -26,7 +26,7 @@ final class NewsListViewController: UIViewController {
         }
     )
     
-    init(viewModel: NewsListViewModel = NewsListViewModel()) {
+    init(viewModel: NewsListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

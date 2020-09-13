@@ -26,8 +26,11 @@ final class Navigator {
     }
     
     func showMain() {
-        let newsListController = NewsListViewController()
-        let personalController = PersonalizedNewsController()
+        let newsListViewModel = NewsListViewModel()
+        let newsListController = NewsListViewController(viewModel: newsListViewModel)
+        
+        let personalViewModel = PersonalizedNewsViewModel()
+        let personalController = NewsListViewController(viewModel: personalViewModel)
         let profileController = ProfileViewController()
         
         let mainTabController = MainTabController(

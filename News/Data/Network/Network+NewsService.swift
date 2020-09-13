@@ -43,8 +43,13 @@ extension NewsService: NetworkServiceType {
                     "country": "us",
                     "apiKey": kPublicKey
                 ]
-            default:
-                return nil
+            case let .everything(keyword, page):
+                return [
+                    "pageSize": kPageSize,
+                    "q": keyword,
+                    "page": page,
+                    "apiKey": kPublicKey
+                ]            
         }
     }
 }
